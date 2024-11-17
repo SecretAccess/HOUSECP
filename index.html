@@ -4,7 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>隅研吾デザイン住宅抽選</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: #1a1a40; /* 紺色の背景 */
+      color: #f5c518; /* 金色のテキスト */
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #1f1f4b; /* 濃い紺色の背景 */
+      border: 2px solid #f5c518; /* 金色の枠 */
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(245, 197, 24, 0.5);
+    }
+
+    h1 {
+      color: #f5c518; /* 金色の見出し */
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #1a1a40; /* 紺色のボタン */
+      color: #f5c518; /* 金色のテキスト */
+      border: 2px solid #f5c518;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #28286e; /* ホバー時の濃紺色 */
+    }
+
+    #loadingMessage {
+      font-size: 22px;
+      color: #f5c518; /* 金色のテキスト */
+      margin-top: 20px;
+    }
+
+    #resultMessage {
+      font-size: 24px;
+      color: #f5c518; /* 金色の当選メッセージ */
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,76 +69,24 @@
     <div id="loadingMessage" class="hidden">抽選中...</div>
     <div id="resultMessage" class="hidden"></div>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    const drawButton = document.getElementById("drawButton");
+    const loadingMessage = document.getElementById("loadingMessage");
+    const resultMessage = document.getElementById("resultMessage");
+
+    drawButton.addEventListener("click", () => {
+      // ボタンを非表示にして、抽選中メッセージを表示
+      drawButton.style.display = "none";
+      loadingMessage.classList.remove("hidden");
+
+      // 2秒後に抽選結果を表示
+      setTimeout(() => {
+        loadingMessage.classList.add("hidden");
+        resultMessage.classList.remove("hidden");
+        resultMessage.textContent = "おめでとうございます！当選しました！日下智恵さんからお受け取りください。";
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
-const drawButton = document.getElementById("drawButton");
-const loadingMessage = document.getElementById("loadingMessage");
-const resultMessage = document.getElementById("resultMessage");
-
-drawButton.addEventListener("click", () => {
-  // ボタンを非表示にして、抽選中メッセージを表示
-  drawButton.style.display = "none";
-  loadingMessage.classList.remove("hidden");
-
-  // 2秒後に抽選結果を表示
-  setTimeout(() => {
-    loadingMessage.classList.add("hidden");
-    resultMessage.classList.remove("hidden");
-    resultMessage.textContent = "おめでとうございます！当選しました！日下智恵さんからお受け取りください。";
-  }, 2000);
-});
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #1a1a40; /* 紺色の背景 */
-  color: #f5c518; /* 金色のテキスト */
-  text-align: center;
-  padding: 20px;
-}
-
-.container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #1f1f4b; /* 濃い紺色の背景 */
-  border: 2px solid #f5c518; /* 金色の枠 */
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(245, 197, 24, 0.5);
-}
-
-h1 {
-  color: #f5c518; /* 金色の見出し */
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-button {
-  padding: 12px 24px;
-  font-size: 18px;
-  background-color: #1a1a40; /* 紺色のボタン */
-  color: #f5c518; /* 金色のテキスト */
-  border: 2px solid #f5c518;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #28286e; /* ホバー時の濃紺色 */
-}
-
-#loadingMessage {
-  font-size: 22px;
-  color: #f5c518; /* 金色のテキスト */
-  margin-top: 20px;
-}
-
-#resultMessage {
-  font-size: 24px;
-  color: #f5c518; /* 金色の当選メッセージ */
-  margin-top: 20px;
-}
-
-.hidden {
-  display: none;
-}
