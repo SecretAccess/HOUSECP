@@ -24,7 +24,7 @@
     }
 
     h1 {
-      color: #f5c518; /* 金色の見出し */
+      color: #f5c518;
       font-size: 28px;
       margin-bottom: 20px;
     }
@@ -32,8 +32,8 @@
     button {
       padding: 12px 24px;
       font-size: 18px;
-      background-color: #1a1a40; /* 紺色のボタン */
-      color: #f5c518; /* 金色のテキスト */
+      background-color: #1a1a40;
+      color: #f5c518;
       border: 2px solid #f5c518;
       border-radius: 5px;
       cursor: pointer;
@@ -41,18 +41,18 @@
     }
 
     button:hover {
-      background-color: #28286e; /* ホバー時の濃紺色 */
+      background-color: #28286e;
     }
 
     #loadingMessage {
       font-size: 22px;
-      color: #f5c518; /* 金色のテキスト */
+      color: #f5c518;
       margin-top: 20px;
     }
 
     #resultMessage {
       font-size: 24px;
-      color: #f5c518; /* 金色の当選メッセージ */
+      color: #f5c518;
       margin-top: 20px;
     }
 
@@ -63,8 +63,8 @@
 </head>
 <body>
   <div class="container">
-    <h1>隅研吾デザイン住宅<br> 抽選サイト</h1>
-    <p>一棟限定！<br>今すぐ抽選に参加しましょう！</p>
+    <h1>隅研吾デザイン住宅 抽選サイト</h1>
+    <p id="description">一棟限定！<br>今すぐ抽選に参加しましょう！</p>
     <button id="drawButton">抽選を開始する</button>
     <div id="loadingMessage" class="hidden">抽選中...</div>
     <div id="resultMessage" class="hidden"></div>
@@ -74,8 +74,12 @@
     const drawButton = document.getElementById("drawButton");
     const loadingMessage = document.getElementById("loadingMessage");
     const resultMessage = document.getElementById("resultMessage");
+    const description = document.getElementById("description");
 
     drawButton.addEventListener("click", () => {
+      // 説明テキストを非表示にする
+      description.classList.add("hidden");
+
       // ボタンを非表示にして、抽選中メッセージを表示
       drawButton.style.display = "none";
       loadingMessage.classList.remove("hidden");
